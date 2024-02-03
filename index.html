@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel</title>
+  <style>
+    body{
+      background-color: black;
+    }
+    .out{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height:60vh;
+      
+    }
+    
+    img{
+      border-radius: 3px;
+    }
+    .slider{
+      height:320px;
+      width:520px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-color: white;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .head{
+      display: flex;
+      justify-content: center;
+    }
+    h1{
+      color: white;
+      font-size: 70px;
+    }
+    .slider img{
+      transition: transform 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="head"><h1 color="white">Slideshow</h1></div>
+  
+  <div class="out">
+    <div class="slider">
+      <img name="slide" width="500" height="300"  />
+  </div>
+</div>
+ 
+  
+  <script>
+var i = 0; 			// Start Point
+var images = [];	// Images Array
+var time = 3000;	// Time Between Switch
+	 
+// Image List
+images[0] = 'tiger.jpg';
+images[1] = 'eagle.jpg';
+images[2] = 'cat.jpg';
+images[3] = 'squirrel.jpg';
+
+// Change Image
+function changeImg(){
+  var slide = document.slide;
+	document.slide.src = images[i];
+  slide.classList.add('slide-transition');
+
+	// Check If Index Is Under Max
+	if(i < images.length - 1){
+	  // Add 1 to Index
+	  i++; 
+	} else { 
+		// Reset Back To O
+		i = 0;
+	}
+  setTimeout(function() {
+    slide.classList.remove('slide-transition');
+  }, 500);
+	// Run function every x seconds
+	setTimeout("changeImg()", time);
+}
+window.onload=changeImg;
+  </script>
+</body>
+</html>
